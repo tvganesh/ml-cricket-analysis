@@ -38,7 +38,7 @@ y = linspace(1,maxballsfaced+ 20,10);
 for i=1:a,
 
    for j= 1:b,
-      ZZ(i,j) = [1 (XX(i,j)-mu(1))/sigma(1) (YY(i,j) - mu(2))/sigma(2) ] * theta;
+      % Compute Normalized ZZ from XX,YY
    end;
 end;
 
@@ -63,9 +63,7 @@ runs=minutes=bf=zeros(13,13);
 for m = 10:25:310, %Minutes played
    for n = 10:25:310,  %Balls faced
      
-      minutes(i,j) = (m - mu(1))/sigma(1);
-      bf(i,j) = (n-mu(2))/sigma(2);
-      runs(i,j) = [1 minutes(i,j) bf(i,j)] * theta;
+      % Compute runs for Minutes played and Balls faced.
 	  
 	  j = j+1;
    end;
@@ -73,14 +71,8 @@ for m = 10:25:310, %Minutes played
    i = i+1;
 end;
 runs
-save dravid.txt runs -ascii % save as txt file
+save srt.txt runs -ascii % save as txt file
 
-
-minutes1 = (210 - mu(1))/sigma(1);
-bf1 = (210-mu(2))/sigma(2);
-runs1 = [1 minutes1 bf1] * theta;
-fprintf(['Predicted runs for Sachin Tendulkar in 210 mins and 210 balls is ' ...
-         '(using gradient descent): %d runs \n'], runs1);
 
 
 
